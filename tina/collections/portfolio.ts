@@ -1,14 +1,13 @@
 import type { Collection } from "tinacms";
 
-export const BlogCollection: Collection = {
-
-  name: "blog",
-  label: "Blogs",
-  path: "src/content/blog",
+export const PortfolioCollection: Collection = {
+  name: "portfolio",
+  label: "Portfolio",
+  path: "src/content/portfolio",
   format: "mdx",
   ui: {
     router({ document }) {
-      return `/blog/${document._sys.filename}`;
+      return `/portfolio/${document._sys.filename}`;
     },
   },
   fields: [
@@ -40,10 +39,16 @@ export const BlogCollection: Collection = {
       type: "image",
     },
     {
+      label: "Category",
+      name: "category",
+      type: "reference",
+      collections: ["category"],
+    },
+    {
       type: "rich-text",
       name: "body",
       label: "Body",
       isBody: true,
     },
   ],
-}
+};
