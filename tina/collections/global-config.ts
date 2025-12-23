@@ -1,5 +1,4 @@
 import type { Collection } from "tinacms";
-import IconComponent from "../components/IconComponent";
 
 export const GlobalConfigCollection: Collection = {
   name: "config",
@@ -63,40 +62,6 @@ export const GlobalConfigCollection: Collection = {
           label: "Path of the Nav Item",
           type: "string",
           required: true,
-        },
-      ],
-    },
-    {
-      name: "contactLinks",
-      label: "Contact Links",
-      type: "object",
-      list: true,
-      ui: {
-        itemProps: (item) => {
-          return {
-            label: item.title,
-          };
-        },
-      },
-      fields: [
-        {
-          name: "title",
-          label: "Title",
-          type: "string",
-        },
-        {
-          name: "link",
-          label: "Link",
-          type: "string",
-        },
-        {
-          name: "icon",
-          label: "Icon",
-          type: "string",
-          ui: {
-            //@ts-ignore
-            component: IconComponent,
-          },
         },
       ],
     },
