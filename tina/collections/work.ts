@@ -1,13 +1,13 @@
 import type { Collection } from "tinacms";
 
-export const PortfolioCollection: Collection = {
-  name: "portfolio",
-  label: "Portfolio",
-  path: "src/content/portfolio",
+export const WorkCollection: Collection = {
+  name: "work",
+  label: "Work",
+  path: "src/content/work",
   format: "mdx",
   ui: {
     router({ document }) {
-      return `/portfolio/${document._sys.filename}`;
+      return `/work/${document._sys.filename}`;
     },
   },
   fields: [
