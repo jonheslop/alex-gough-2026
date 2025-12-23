@@ -8,7 +8,7 @@ export default async (load, options, el) => {
     if (!isInIframe) {
       return;
     }
-    
+
     const hydrate = await load();
     await hydrate();
   } catch (error) {

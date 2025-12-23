@@ -14,13 +14,13 @@ export const PageCollection: Collection = {
     {
       name: "seoTitle",
       type: "string",
-      required: true
+      required: true,
     },
     {
       name: "body",
       type: "rich-text",
       isBody: true,
-      required: true
-    }
-  ]
-}
+      required: true,
+    },
+  ],
+};

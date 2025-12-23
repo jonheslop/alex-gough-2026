@@ -7,7 +7,7 @@ export default () => ({
     "astro:config:setup": ({ addClientDirective }) => {
       addClientDirective({
         name: "tina",
-        entrypoint: "./astro-tina-directive/tina.js", 
+        entrypoint: "./astro-tina-directive/tina.js",
       });
     },
   },

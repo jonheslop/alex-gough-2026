@@ -6,7 +6,9 @@
     "dev": "tinacms dev -c \"astro dev\"",
     "build": "tinacms build && astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "format:check": "prettier --check .",
+    "format:write": "prettier --write ."
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.7",
@@ -22,6 +24,8 @@
   },
   "devDependencies": {
     "@tinacms/cli": "^1.11.0",
-    "@types/node": "^22.18.12"
+    "@types/node": "^22.18.12",
+    "prettier": "^3.7.4",
+    "prettier-plugin-astro": "^0.14.1"
   }
 }

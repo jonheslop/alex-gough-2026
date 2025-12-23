@@ -1,6 +1,6 @@
-import 'astro'
-declare module 'astro' {
+import "astro";
+declare module "astro" {
   interface AstroClientDirectives {
-    'client:tina'?: boolean
+    "client:tina"?: boolean;
   }
 }
