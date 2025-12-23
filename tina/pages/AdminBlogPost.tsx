@@ -1,12 +1,12 @@
 import React from "react";
 import { tinaField, useTina } from "tinacms/dist/react";
-import type { BlogQuery, BlogQueryVariables } from "../__generated__/types";
+import type { WorkQuery, WorkQueryVariables } from "../__generated__/types";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
 import FormattedDate from "../../src/components/react/FormattedDate.tsx";
 
 type Props = {
-  variables: BlogQueryVariables;
-  data: BlogQuery;
+  variables: WorkQueryVariables;
+  data: WorkQuery;
   query: string;
 };
 
@@ -17,36 +17,36 @@ export default function AdminBlogPost(props: Props) {
     data: props.data,
   });
 
-  const blog = data.blog;
+  const work = data.work;
 
   return (
     <article>
       <div
-        data-tina-field={tinaField(blog, "heroImage")}
+        data-tina-field={tinaField(work, "heroImage")}
         className="hero-image"
       >
-        {blog.heroImage && (
-          <img width={1020} height={510} src={blog.heroImage} alt="" />
+        {work.heroImage && (
+          <img width={1020} height={510} src={work.heroImage} alt="" />
         )}
       </div>
       <div className="prose">
         <div className="title">
-          <div className="date" data-tina-field={tinaField(blog, "pubDate")}>
-            <FormattedDate date={blog.pubDate} />
-            {blog.updatedDate && (
+          <div className="date" data-tina-field={tinaField(work, "pubDate")}>
+            <FormattedDate date={work.pubDate} />
+            {work.updatedDate && (
               <div
                 className="last-updated-on"
-                data-tina-field={tinaField(blog, "updatedDate")}
+                data-tina-field={tinaField(work, "updatedDate")}
               >
-                Last updated on <FormattedDate date={blog.updatedDate} />
+                Last updated on <FormattedDate date={work.updatedDate} />
               </div>
             )}
           </div>
-          <h1 data-tina-field={tinaField(blog, "title")}>{blog.title}</h1>
+          <h1 data-tina-field={tinaField(work, "title")}>{work.title}</h1>
           <hr />
         </div>
-        <div data-tina-field={tinaField(blog, "body")}>
-          <TinaMarkdown content={blog.body} />
+        <div data-tina-field={tinaField(work, "body")}>
+          <TinaMarkdown content={work.body} />
         </div>
       </div>
     </article>
