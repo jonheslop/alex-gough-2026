@@ -17,6 +17,11 @@ export const PageCollection: Collection = {
       required: true,
     },
     {
+      name: "heroImage",
+      label: "Hero Image",
+      type: "image",
+    },
+    {
       name: "body",
       type: "rich-text",
       isBody: true,

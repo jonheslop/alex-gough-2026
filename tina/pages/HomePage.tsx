@@ -19,7 +19,12 @@ const HomePage = (props: Props) => {
 
   return (
     <main>
-      <div data-tina-field={tinaField(page, "body")}>
+      {page.heroImage && (
+        <div data-tina-field={tinaField(page, "heroImage")}>
+          <img src={page.heroImage} alt="" />
+        </div>
+      )}
+      <div data-tina-field={tinaField(page, "body")} className="prose">
         <TinaMarkdown content={page.body} />
       </div>
     </main>
