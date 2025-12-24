@@ -18,12 +18,13 @@ import config from "../content/config/config.json";
 <style>
   header {
     margin: 0;
-    padding: 0 1em;
-    background: white;
+    padding: 1em 2em;
   }
   h2 {
     margin: 0;
-    font-size: 1em;
+    font-size: 1.5rem;
+    font-weight: normal;
+    letter-spacing: -0.0125rem;
   }
 
   h2 a,
@@ -35,10 +36,14 @@ import config from "../content/config/config.json";
     align-items: center;
     justify-content: space-between;
   }
+
+  .internal-links {
+    display: flex;
+    gap: 1rem;
+  }
   nav a {
-    padding: 1em 0.5em;
     color: var(--black);
-    border-bottom: 4px solid transparent;
+    border-bottom: 2px solid transparent;
     text-decoration: none;
   }
   nav a.active {

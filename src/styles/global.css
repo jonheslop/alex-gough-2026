@@ -5,8 +5,8 @@
  */
 
 :root {
-  --accent: #2337ff;
-  --accent-dark: #000d8a;
+  --accent: oklch(94.2% 0.32 275);
+  --accent-dark: oklch(42.9% 0.194 275);
   --black: 15, 18, 25;
   --gray: 96, 115, 159;
   --gray-light: 229, 233, 240;
@@ -23,8 +23,8 @@ body {
   word-wrap: break-word;
   overflow-wrap: break-word;
   color: rgb(var(--gray-dark));
-  font-size: 20px;
-  line-height: 1.7;
+  font-size: 16px;
+  line-height: 1.5;
 }
 main {
   width: 720px;
@@ -54,4 +54,16 @@ article {
   clip-path: inset(50%);
   /* added line to stop words getting smushed together (as they go onto separate lines and some screen readers do not understand line feeds as a space */
   white-space: nowrap;
+}
+
+main a:link,
+main a:visited {
+  color: var(--accent-dark);
+  border-bottom: 2px solid transparent;
+}
+main a:hover {
+  background-color: var(--accent);
+  text-decoration-thickness: 2px;
+  outline: 3px solid var(--accent);
+  border-radius: 1px;
 }
