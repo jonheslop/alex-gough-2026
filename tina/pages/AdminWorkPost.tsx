@@ -1,6 +1,6 @@
 import React from "react";
 import { tinaField, useTina } from "tinacms/dist/react";
-import type { WorkQuery, WorkQueryVariables } from "../__generated__/types";
+import type { WorkQuery, WorkQueryVariables } from "../__generated__/types.ts";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
 import FormattedDate from "../../src/components/react/FormattedDate.tsx";
 
@@ -10,7 +10,7 @@ type Props = {
   query: string;
 };
 
-export default function AdminBlogPost(props: Props) {
+export default function AdminWorkPost(props: Props) {
   const { data } = useTina({
     query: props.query,
     variables: props.variables,
