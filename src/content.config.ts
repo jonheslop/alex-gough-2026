@@ -1,5 +1,33 @@
-import { defineCollection, z } from "astro:content";
+import { defineCollection, z, reference } from "astro:content";
 import client from "../tina/__generated__/client";
+
+const category = defineCollection({
+  loader: async () => {
+    const categoriesResponse = await client.queries.categoryConnection();
+
+    return categoriesResponse.data.categoryConnection.edges
+      ?.filter((category) => !!category)
+      .map((category) => {
+        const node = category?.node;
+
+        return {
+          ...node,
+          id: node?._sys.relativePath.replace(/\.mdx?$/, ""),
+          tinaInfo: node?._sys,
+        };
+      });
+  },
+  schema: z.object({
+    tinaInfo: z.object({
+      filename: z.string(),
+      basename: z.string(),
+      path: z.string(),
+      relativePath: z.string(),
+    }),
+    name: z.string(),
+    description: z.string().optional(),
+  }),
+});
 
 const work = defineCollection({
   loader: async () => {
@@ -30,6 +58,7 @@ const work = defineCollection({
     pubDate: z.coerce.date(),
     updatedDate: z.coerce.date().optional(),
     heroImage: z.string().nullish(),
+    category: reference("category").optional(),
   }),
 });
 
@@ -61,4 +90,4 @@ const page = defineCollection({
     body: z.any(),
   }),
 });
-export const collections = { work, page };
+export const collections = { work, page, category };
