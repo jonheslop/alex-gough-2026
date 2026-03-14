@@ -9,7 +9,7 @@ import cloudflare from "@astrojs/cloudflare";
 
 // https://astro.build/config
 export default defineConfig({
-  site: process.env.SITE_URL,
+  site: process.env.SITE_URL || "https://alex-gough-2026.albion-dev.workers.dev",
   integrations: [mdx(), sitemap(), react(), tinaDirective()],
   adapter: cloudflare(),
 });
