@@ -43,6 +43,8 @@ const work = defineCollection({
           ...node,
           id: node?._sys.relativePath.replace(/\.mdx?$/, ""), // Generate clean URLs
           tinaInfo: node?._sys, // Include Tina system info if needed
+          // Transform category reference to just the ID for Astro
+          category: node?.category?._sys?.relativePath?.replace(/\.mdx?$/, "") || node?.category,
         };
       });
   },
