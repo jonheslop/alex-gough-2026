@@ -45,14 +45,19 @@ export default function AdminWorkPost(props: Props) {
         className="artworks"
       >
         {work.artworks && work.artworks.map((artwork) => (
-          <div className="artwork">
-            {artwork.image && (
-              <img src={artwork.image} alt={artwork.caption} />
+          <>
+            {artwork && (
+              <div className="artwork" key={artwork.image}>
+                {artwork.image && (
+                  <img src={artwork.image} alt={artwork.caption ?? ""} />
+                )}
+                {artwork.caption && <p>{artwork.caption}</p>}
+              </div>
             )}
-            {artwork.caption && <p>{artwork.caption}</p>}
-          </div>
+          </>
         ))}
       </div>
     </article>
   );
+
 }

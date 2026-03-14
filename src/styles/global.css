@@ -159,6 +159,7 @@ main a:hover {
 
 .artwork {
   align-self: end;
+  cursor: zoom-in;
 }
 
 .artwork p {

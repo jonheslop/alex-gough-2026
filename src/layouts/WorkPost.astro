@@ -20,5 +20,128 @@ const { title, description } = Astro.props;
       <slot />
     </main>
     <Footer />
+
+    <div id="lightbox" class="lightbox" hidden>
+      <button class="lightbox-close" aria-label="Close lightbox">&times;</button
+      >
+      <button class="lightbox-prev" aria-label="Previous image">&#8592;</button>
+      <img class="lightbox-img" src="" alt="" />
+      <button class="lightbox-next" aria-label="Next image">&#8594;</button>
+      <p class="lightbox-caption"></p>
+    </div>
+
+    <style>
+      .lightbox {
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        background: rgba(0, 0, 0, 0.9);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        backdrop-filter: blur(5px);
+      }
+      .lightbox[hidden] {
+        display: none;
+      }
+      .lightbox-img {
+        max-width: 90vw;
+        max-height: 90vh;
+        object-fit: contain;
+      }
+      .lightbox-close,
+      .lightbox-prev,
+      .lightbox-next {
+        position: absolute;
+        background: none;
+        border: none;
+        color: white;
+        font-size: 2rem;
+        cursor: pointer;
+        padding: 1rem;
+      }
+      .lightbox-close {
+        top: 1rem;
+        right: 1rem;
+      }
+      .lightbox-prev {
+        left: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      .lightbox-next {
+        right: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      .lightbox-caption {
+        position: absolute;
+        bottom: 1.5rem;
+        color: white;
+        text-align: center;
+        max-width: 80vw;
+        margin: 0;
+      }
+      .artwork img {
+        cursor: pointer;
+      }
+    </style>
+
+    <script>
+      const lightbox = document.getElementById("lightbox")!;
+      const lbImg = lightbox.querySelector<HTMLImageElement>(".lightbox-img")!;
+      const lbCaption =
+        lightbox.querySelector<HTMLParagraphElement>(".lightbox-caption")!;
+      const images = Array.from(
+        document.querySelectorAll<HTMLImageElement>(".artwork img"),
+      );
+      let currentIndex = 0;
+
+      function show(index: number) {
+        currentIndex =
+          ((index % images.length) + images.length) % images.length;
+        const img = images[currentIndex];
+        lbImg.src = img.src;
+        lbImg.alt = img.alt;
+        const caption =
+          img.closest(".artwork")?.querySelector("p")?.textContent ?? "";
+        lbCaption.textContent = caption;
+        lbCaption.hidden = !caption;
+        lightbox.hidden = false;
+        document.body.style.overflow = "hidden";
+      }
+
+      function close() {
+        lightbox.hidden = true;
+        document.body.style.overflow = "";
+      }
+
+      images.forEach((img, i) => img.addEventListener("click", () => show(i)));
+
+      lightbox
+        .querySelector(".lightbox-close")!
+        .addEventListener("click", close);
+      lightbox
+        .querySelector(".lightbox-prev")!
+        .addEventListener("click", (e) => {
+          e.stopPropagation();
+          show(currentIndex - 1);
+        });
+      lightbox
+        .querySelector(".lightbox-next")!
+        .addEventListener("click", (e) => {
+          e.stopPropagation();
+          show(currentIndex + 1);
+        });
+      lbImg.addEventListener("click", (e) => e.stopPropagation());
+      lightbox.addEventListener("click", close);
+
+      document.addEventListener("keydown", (e) => {
+        if (lightbox.hidden) return;
+        if (e.key === "Escape") close();
+        if (e.key === "ArrowRight") show(currentIndex + 1);
+        if (e.key === "ArrowLeft") show(currentIndex - 1);
+      });
+    </script>
   </body>
 </html>
