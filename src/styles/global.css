@@ -4,7 +4,14 @@
   --black: 15, 18, 25;
   --gray: 96, 115, 159;
   --gray-light: 229, 233, 240;
+  --gray-mid: 100, 111, 130;
   --gray-dark: 34, 41, 57;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
 body {
@@ -20,25 +27,26 @@ body {
 }
 
 main {
-  max-width: calc(100% - 2em);
-  padding: 2em 1em;
+  width: 100%;
+  padding: 2em;
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   gap: 2rem;
-}
-
-@media (min-width: 768px) {
-  main {
-    padding: 2em;
-    gap: 4rem;
-  }
+  min-height: 100dvh;
 }
 
 article {
-  width: 720px;
-  max-width: calc(100% - 2em);
-  margin: auto;
-  padding: 3em 1em;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 2rem;
+}
+
+article .date {
+  font-size: 0.875rem;
+}
+
+article h1 {
+  margin: 0 0 1rem;
 }
 
 img {
@@ -69,15 +77,13 @@ main a:visited {
   color: var(--accent-dark);
   border-bottom: 2px solid transparent;
 }
+
 main a:hover {
-  background-color: var(--accent);
-  text-decoration-thickness: 2px;
-  outline: 3px solid var(--accent);
-  border-radius: 1px;
+  color: var(--accent);
 }
 
 .prose {
-  max-width: 340px;
+  max-width: 38rem;
   color: rgb(var(--gray-dark));
   font-weight: 300;
   text-wrap: pretty;
@@ -91,7 +97,7 @@ main a:hover {
   margin: 0;
 }
 
-.prose p + p {
+.prose p+p {
   margin-top: 1rem;
 }
 
@@ -105,4 +111,59 @@ main a:hover {
   font-size: 1.125em;
   font-weight: 500;
   margin: 2rem 0 0;
+}
+
+.work-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 4rem 2rem;
+  width: 100%;
+}
+
+.work-list li {
+  align-self: end;
+}
+
+.work-list a:link,
+.work-list a:visited {
+  color: var(--black);
+  text-decoration: none;
+}
+
+.work-list header {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  flex-wrap: wrap;
+}
+
+.work-list h4,
+.work-list p {
+  margin: 0;
+}
+
+.work-list p {
+  font-size: .875rem;
+  color: rgb(var(--gray-mid));
+}
+
+.artworks {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 4rem 2rem;
+  width: 100%;
+}
+
+.artwork {
+  align-self: end;
+}
+
+.artwork p {
+  font-size: .875rem;
+  margin: 0;
+  color: rgb(var(--gray-mid));
+  text-wrap: pretty;
 }

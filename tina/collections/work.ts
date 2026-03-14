@@ -19,11 +19,6 @@ export const WorkCollection: Collection = {
       required: true,
     },
     {
-      name: "description",
-      label: "Description",
-      type: "string",
-    },
-    {
       name: "pubDate",
       label: "Publication Date",
       type: "datetime",
@@ -39,10 +34,22 @@ export const WorkCollection: Collection = {
       type: "image",
     },
     {
-      label: "Category",
-      name: "category",
-      type: "reference",
-      collections: ["category"],
+      name: "artworks",
+      label: "Artworks",
+      type: "object",
+      list: true,
+      fields: [
+        {
+          name: "image",
+          label: "Image",
+          type: "image",
+        },
+        {
+          name: "caption",
+          label: "Caption",
+          type: "string",
+        },
+      ],
     },
     {
       type: "rich-text",

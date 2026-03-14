@@ -21,14 +21,6 @@ export default function AdminWorkPost(props: Props) {
 
   return (
     <article>
-      <div
-        data-tina-field={tinaField(work, "heroImage")}
-        className="hero-image"
-      >
-        {work.heroImage && (
-          <img width={1020} height={510} src={work.heroImage} alt="" />
-        )}
-      </div>
       <div className="prose">
         <div className="title">
           <div className="date" data-tina-field={tinaField(work, "pubDate")}>
@@ -43,11 +35,23 @@ export default function AdminWorkPost(props: Props) {
             )}
           </div>
           <h1 data-tina-field={tinaField(work, "title")}>{work.title}</h1>
-          <hr />
         </div>
         <div data-tina-field={tinaField(work, "body")}>
           <TinaMarkdown content={work.body} />
         </div>
+      </div>
+      <div
+        data-tina-field={tinaField(work, "heroImage")}
+        className="artworks"
+      >
+        {work.artworks && work.artworks.map((artwork) => (
+          <div className="artwork">
+            {artwork.image && (
+              <img src={artwork.image} alt={artwork.caption} />
+            )}
+            {artwork.caption && <p>{artwork.caption}</p>}
+          </div>
+        ))}
       </div>
     </article>
   );

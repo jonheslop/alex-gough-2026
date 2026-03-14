@@ -15,37 +15,32 @@ const posts = (await getCollection("work")).sort(
 <html lang="en">
   <head>
     <BaseHead title={config.seo.title} description={config.seo.description} />
-    <style>
-      main {
-        width: 960px;
-      }
-    </style>
   </head>
   <body>
     <Header />
     <main>
-      <section>
-        <ul>
-          {
-            posts.map((post) => (
-              <li>
-                <a href={`/work/${post.id}/`}>
-                  <img
-                    width={720}
-                    height={360}
-                    src={post.data.heroImage}
-                    alt=""
-                  />
-                  <h4 class="title">{post.data.title}</h4>
-                  <p class="date">
+      <ul class="work-list">
+        {
+          posts.map((post) => (
+            <li>
+              <a href={`/work/${post.id}/`}>
+                <img
+                  width={720}
+                  height={360}
+                  src={post.data.heroImage}
+                  alt=""
+                />
+                <header>
+                  <h4>{post.data.title}</h4>
+                  <p>
                     <FormattedDate date={post.data.pubDate} />
                   </p>
-                </a>
-              </li>
-            ))
-          }
-        </ul>
-      </section>
+                </header>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
     </main>
     <Footer />
   </body>

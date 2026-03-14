@@ -1,6 +1,5 @@
 import { defineConfig } from "tinacms";
 import { WorkCollection } from "./collections/work";
-import { CategoryCollection } from "./collections/category";
 import { GlobalConfigCollection } from "./collections/global-config";
 import { PageCollection } from "./collections/page";
 
@@ -36,7 +35,6 @@ export default defineConfig({
       WorkCollection,
       PageCollection,
       GlobalConfigCollection,
-      CategoryCollection,
     ],
   },
   search: {
