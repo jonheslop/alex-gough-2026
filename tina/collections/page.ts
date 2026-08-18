@@ -17,9 +17,21 @@ export const PageCollection: Collection = {
       required: true,
     },
     {
-      name: "heroImage",
-      label: "Hero Image",
-      type: "image",
+      name: "heroImages",
+      label: "Hero Images",
+      type: "object",
+      list: true,
+      fields: [
+        {
+          name: "image",
+          type: "image",
+          required: true,
+        },
+        {
+          name: "caption",
+          type: "string",
+        },
+      ],
     },
     {
       name: "body",

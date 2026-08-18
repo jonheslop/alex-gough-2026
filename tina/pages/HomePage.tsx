@@ -16,17 +16,29 @@ const HomePage = (props: Props) => {
   });
 
   const page = data.page;
+  const heroImages = page.heroImages ?? [];
 
   return (
     <main>
-      {page.heroImage && (
-        <div data-tina-field={tinaField(page, "heroImage")}>
-          <img src={page.heroImage} alt="" />
-        </div>
-      )}
       <div data-tina-field={tinaField(page, "body")} className="prose">
         <TinaMarkdown content={page.body} />
       </div>
+      {heroImages.length > 0 && (
+        <div
+          className="slideshow"
+          data-tina-field={tinaField(page, "heroImages")}
+        >
+          {heroImages.map((image, index) => (
+            <img
+              key={image.image}
+              className="slideshow-slide"
+              src={image.image}
+              alt={image.caption ?? ""}
+              data-active={index === 0 ? "" : undefined}
+            />
+          ))}
+        </div>
+      )}
     </main>
   );
 };

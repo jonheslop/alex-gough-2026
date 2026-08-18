@@ -17,5 +17,36 @@ const data = await client.queries.page({ relativePath: "home.mdx" });
     <Header />
     <HomePage {...data} client:tina />
     <Footer />
+
+    <script>
+      const SLIDE_DURATION = 12000;
+
+      function advance() {
+        const slides = Array.from(
+          document.querySelectorAll<HTMLImageElement>(".slideshow-slide"),
+        );
+        if (slides.length < 2) return;
+
+        // Read the active slide from the DOM each tick so we stay in step if
+        // Tina re-renders the slideshow while editing.
+        const currentIndex = slides.findIndex((slide) =>
+          slide.hasAttribute("data-active"),
+        );
+        const next = slides[(currentIndex + 1) % slides.length];
+
+        slides.forEach((slide) => slide.removeAttribute("data-active"));
+        next.setAttribute("data-active", "");
+      }
+
+      let timer = setInterval(advance, SLIDE_DURATION);
+
+      // Clicking the slideshow advances it, and restarts the clock so the next
+      // automatic change is still a full interval away.
+      document.querySelector(".slideshow")?.addEventListener("click", () => {
+        advance();
+        clearInterval(timer);
+        timer = setInterval(advance, SLIDE_DURATION);
+      });
+    </script>
   </body>
 </html>

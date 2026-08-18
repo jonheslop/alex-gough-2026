@@ -34,8 +34,9 @@ import config from "../content/config/config.json";
     letter-spacing: -0.0125rem;
   }
 
-  h2 a,
+  nav h2 a,
   h2 a.active {
+    color: rgb(var(--gray-base));
     text-decoration: none;
   }
   nav {
@@ -48,12 +49,16 @@ import config from "../content/config/config.json";
     display: flex;
     gap: 1rem;
   }
+
   nav a {
-    color: var(--black);
+    color: rgb(var(--gray-mid));
+    font-weight: 300;
     border-bottom: 2px solid transparent;
     text-decoration: none;
   }
+
   nav a.active {
+    color: rgb(var(--black));
     text-decoration: none;
     border-bottom-color: var(--accent);
   }
