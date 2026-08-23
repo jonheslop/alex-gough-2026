@@ -174,8 +174,15 @@ main a:hover {
 }
 
 .artwork {
-  align-self: end;
+  align-self: stretch;
   cursor: zoom-in;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.artwork img {
+  margin: auto;
 }
 
 .artwork p {
