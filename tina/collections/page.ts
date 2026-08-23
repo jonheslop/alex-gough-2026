@@ -21,6 +21,11 @@ export const PageCollection: Collection = {
       label: "Hero Images",
       type: "object",
       list: true,
+      ui: {
+        itemProps: (item) => ({
+          label: item?.caption || item?.image?.split("/").pop() || "Hero Image",
+        }),
+      },
       fields: [
         {
           name: "image",

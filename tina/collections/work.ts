@@ -38,6 +38,12 @@ export const WorkCollection: Collection = {
       label: "Artworks",
       type: "object",
       list: true,
+      ui: {
+        itemProps: (item) => ({
+          label: item?.caption || item?.image?.split("/").pop() || "Artwork item",
+        }),
+      },
+
       fields: [
         {
           name: "image",
