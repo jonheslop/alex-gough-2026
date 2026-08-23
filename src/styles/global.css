@@ -178,11 +178,8 @@ main a:hover {
   cursor: zoom-in;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 1rem;
-}
-
-.artwork img {
-  margin: auto;
 }
 
 .artwork p {
