@@ -21,7 +21,7 @@ export default function AdminWorkPost(props: Props) {
 
   return (
     <article>
-      <div className="prose">
+      <div className="prose work-intro">
         <div className="title">
           <h1 data-tina-field={tinaField(work, "title")}>{work.title}</h1>
         </div>
