@@ -19,6 +19,12 @@ export const WorkCollection: Collection = {
       required: true,
     },
     {
+      name: "order",
+      label: "Order",
+      description: "Position on the Work page (1 = first)",
+      type: "number",
+    },
+    {
       name: "pubDate",
       label: "Publication Date",
       type: "datetime",
@@ -40,7 +46,8 @@ export const WorkCollection: Collection = {
       list: true,
       ui: {
         itemProps: (item) => ({
-          label: item?.caption || item?.image?.split("/").pop() || "Artwork item",
+          label:
+            item?.caption || item?.image?.split("/").pop() || "Artwork item",
         }),
       },
 

@@ -9,7 +9,7 @@ export async function GET(context) {
     description: config.seo.description,
     site: context.site,
     items: posts.map((post) => ({
-      ...post.data,
+      title: post.data.title,
       link: `/work/${post.id}/`,
     })),
   });

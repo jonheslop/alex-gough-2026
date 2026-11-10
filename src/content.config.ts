@@ -27,7 +27,8 @@ const work = defineCollection({
       relativePath: z.string(),
     }),
     title: z.string(),
-    pubDate: z.coerce.date(),
+    order: z.number().nullish(),
+    pubDate: z.coerce.date().nullish(),
     updatedDate: z.coerce.date().optional(),
     heroImage: z.string().nullish(),
     artworks: z
