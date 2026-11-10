@@ -1,5 +1,5 @@
 {
-	"main": "dist/_worker.js/index.js",
+	"main": "@astrojs/cloudflare/entrypoints/server",
 	"name": "alex-gough-2026",
   "compatibility_date": "2026-03-14",
   "compatibility_flags": [
